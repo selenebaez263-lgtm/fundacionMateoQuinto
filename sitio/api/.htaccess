@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Si el archivo o carpeta pedido no existe físicamente, todo se enruta a index.php,
+# que se encarga de interpretar la ruta (ej. /api/contenido/inicio, /api/proyectos/5/estado).
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

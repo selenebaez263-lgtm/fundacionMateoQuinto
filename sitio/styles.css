@@ -1,0 +1,275 @@
+
+body {
+    font-family: "Source Serif 4", serif;
+    scroll-behavior: smooth;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Bento grid (proyectos.html) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.transition-all-custom {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hero recorte (inicio.html) */
+.hero-clip {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+
+@media (max-width: 768px) {
+    .hero-clip {
+        clip-path: none;
+    }
+}
+
+/* Tarjetas con efecto flotante (inicio.html) */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(27, 67, 50, 0.1), 0 10px 10px -5px rgba(27, 67, 50, 0.04);
+}
+
+/* Formas orgánicas (contacto.html / nuestra_labor.html) */
+.organic-shape {
+    clip-path: ellipse(75% 100% at 50% 0%);
+}
+
+.organic-border {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* Tarjeta de vidrio (contacto.html) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(63, 73, 69, 0.1);
+}
+
+/* Barra de navegación al hacer scroll (donar.html) */
+.scrolled-nav {
+    background-color: rgba(250, 249, 247, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+/* Animación de aparición al hacer scroll (nuestra_labor.html) */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 60;
+    width: 60px;
+    height: 60px;
+    border-radius: 9999px;
+    background-color: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: #ffffff;
+}
+
+/* Botón flotante animado (usado en proyectos.php): anillo de pulso + imagen dentro del círculo */
+.whatsapp-float.whatsapp-float--pulse {
+    overflow: visible;
+    animation: wa-bounce 2.6s ease-in-out infinite;
+}
+
+.whatsapp-float--pulse::before,
+.whatsapp-float--pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: #25D366;
+    z-index: -1;
+    animation: wa-pulse 2.2s ease-out infinite;
+}
+
+.whatsapp-float--pulse::after {
+    animation-delay: 1.1s;
+}
+
+.whatsapp-float--pulse img {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    pointer-events: none;
+}
+
+@keyframes wa-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.55;
+    }
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+
+@keyframes wa-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-float--pulse,
+    .whatsapp-float--pulse::before,
+    .whatsapp-float--pulse::after {
+        animation: none;
+    }
+}
+
+/* Iconos de redes sociales en pie de página / tarjeta de contacto */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* =========================================================
+   Carrusel de fotos (inicio.html, sección "Nuestro Objetivo")
+   ========================================================= */
+.carousel {
+    background-color: #e9e8e6;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #012d1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 5;
+}
+
+.carousel-arrow:hover {
+    background: lch(92.5% 37.45 122.71);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #ffffff;
+    width: 24px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 5;
+    background: rgba(1, 45, 29, 0.85);
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-family: "Source Serif 4", serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
